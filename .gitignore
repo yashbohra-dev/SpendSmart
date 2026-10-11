@@ -1,0 +1,17 @@
+
+# Python virtual environment
+.venv/
+
+# Python cache files
+__pycache__/
+*.py[cod]
+
+# Personal expense records
+expenses.csv
+
+# Private Streamlit settings
+.streamlit/secrets.toml
+
+# Editor and operating system files
+.vscode/
+.DS_Store
