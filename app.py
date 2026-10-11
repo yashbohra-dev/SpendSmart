@@ -12,10 +12,26 @@ st.set_page_config(
 DATA_FILE = Path(__file__).parent / "expenses.csv"
 
 
+
 def load_expenses():
     if DATA_FILE.exists():
-        return pd.read_csv(DATA_FILE).to_dict("records")
+        try:
+            df = pd.read_csv(DATA_FILE)
+
+            if df.empty:
+                return []
+
+            return df.to_dict("records")
+
+        except (
+            pd.errors.EmptyDataError,
+            pd.errors.ParserError,
+            UnicodeDecodeError
+        ):
+            return []
+
     return []
+
 
 
 if "expenses" not in st.session_state:
